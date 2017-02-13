@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:Accio"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Button Name="DownloadButton" DockPanel.Dock="Top" Click="DownloadButton_Click" IsDefault="True">Get availability</Button>
+        <TextBox Name="OutputBox" />
+    </DockPanel>
 </Window>

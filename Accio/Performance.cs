@@ -19,9 +19,12 @@ namespace Accio
 
         public int Part { get; }
 
+        public string PartLabel => $"Part {Part}";
+
         public PerformanceAvailability Availability { get; }
 
-        public static IEnumerable<Performance> ParsePerformances(string input) => input.Split('|').Select(ParsePerformance);
+        public static IEnumerable<Performance> ParsePerformances(string input)
+            => input.Split(new[] { '|' }, StringSplitOptions.RemoveEmptyEntries).Select(ParsePerformance);
 
         public static Performance ParsePerformance(string input)
         {
@@ -46,9 +49,9 @@ namespace Accio
                     return PerformanceAvailability.Full;
             }
         }
-    }
 
-    // https://harrypottertheplay.nimaxtheatres.com/hpcc/WEBPAGES/EntaWebShow/ShowLanding.aspx
+        public string ToListItem() => string.Join("\t", DateAndHour.ToShortDateString(), DateAndHour.ToShortTimeString(), PartLabel, Availability);
+    }
 
     public enum PerformanceAvailability
     {

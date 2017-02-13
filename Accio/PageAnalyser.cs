@@ -10,7 +10,7 @@ namespace Accio
 {
     public class PageAnalyser
     {
-        public static string GetReserveationPageLink(string landingPage)
+        public string GetBookingPageLink(string landingPage)
         {
             var htmlPage = new HtmlParser().Parse(landingPage);
             return htmlPage.All
@@ -20,7 +20,7 @@ namespace Accio
                            .Single();
         }
 
-        public static string ExtractDataFromBookingPage(string bookingPage)
+        public string ExtractDataFromBookingPage(string bookingPage)
         {
             var htmlPage = new HtmlParser().Parse(bookingPage);
             return htmlPage.All

@@ -24,5 +24,13 @@ namespace Accio
         {
             InitializeComponent();
         }
+
+        private async void DownloadButton_Click(object sender, RoutedEventArgs e)
+        {
+            IsEnabled = false;
+            var performances = await new Scrapper().DownloadPerformances();
+            OutputBox.Text = string.Join("\n", performances.Select(p => p.ToListItem()));
+            IsEnabled = true;
+        }
     }
 }
