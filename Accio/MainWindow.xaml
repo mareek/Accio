@@ -8,6 +8,7 @@
         Title="MainWindow" Height="350" Width="525">
     <DockPanel>
         <Button Name="DownloadButton" DockPanel.Dock="Top" Click="DownloadButton_Click" IsDefault="True">Get availability</Button>
+        <WebBrowser Name="Browser" DockPanel.Dock="Top" Height="20"></WebBrowser>
         <TextBox Name="OutputBox" />
     </DockPanel>
 </Window>
