@@ -10,7 +10,7 @@ namespace Accio
     public class Scrapper
     {
         private const string BasePageUrl = "https://harrypottertheplay.nimaxtheatres.com/hpcc/WEBPAGES/";
-        private const string LandingPageUrl = "https://harrypottertheplay.nimaxtheatres.com/hpcc/WEBPAGES/EntaWebShow/ShowLanding.aspx";
+        public const string LandingPageUrl = "https://harrypottertheplay.nimaxtheatres.com/hpcc/WEBPAGES/EntaWebShow/ShowLanding.aspx";
 
         private readonly PageAnalyser _analyser = new PageAnalyser();
         private IPageDownloader _pageDownloader;
