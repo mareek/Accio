@@ -10,6 +10,16 @@ namespace Accio
 {
     public class PageAnalyser
     {
+        public string GetQueueLink(string ticketInformationPage)
+        {
+            var htmlPage = new HtmlParser().Parse(ticketInformationPage);
+            return htmlPage.All
+                           .OfType<IHtmlAnchorElement>()
+                           .Where(a => a.Href.Contains("enta"))
+                           .Select(a => a.GetAttribute("href"))
+                           .Single();
+        }
+
         public string GetBookingPageLink(string landingPage)
         {
             var htmlPage = new HtmlParser().Parse(landingPage);

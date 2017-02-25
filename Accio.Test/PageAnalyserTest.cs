@@ -11,6 +11,14 @@ namespace Accio.Test
     public class PageAnalyserTest
     {
         [Fact]
+        public void TestTicketInformationPage()
+        {
+            var ticketInformationPageText = File.ReadAllText(@"Resources\TicketInformationPage.html");
+            var result = new PageAnalyser().GetQueueLink(ticketInformationPageText);
+            Assert.Equal("https://enta.queue-it.net/?c=enta&e=hpplay24a", result);
+        }
+
+        [Fact]
         public void TestLandingPage()
         {
             var landingPageText = File.ReadAllText(@"Resources\LandingPage.html");
