@@ -23,12 +23,12 @@ namespace Accio
 
         public async Task<IEnumerable<Performance>> DownloadPerformances()
         {
-            var landingPageText = await _browser.DownloadPage(LandingPageUrl);
+            var landingPageText = await _browser.DownloadPageAsync(LandingPageUrl);
 
             var bookingPageLink = _analyser.GetBookingPageLink(landingPageText);
             var bookingPageUrl = BasePageUrl + bookingPageLink.Replace("../", "");
 
-            var bookingPageContent = await _browser.DownloadPage(bookingPageUrl);
+            var bookingPageContent = await _browser.DownloadPageAsync(bookingPageUrl);
             var bookingData = _analyser.ExtractDataFromBookingPage(bookingPageContent);
 
             return Performance.ParsePerformances(bookingData);

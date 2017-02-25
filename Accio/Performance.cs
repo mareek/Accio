@@ -50,7 +50,8 @@ namespace Accio
             }
         }
 
-        public string ToListItem() => string.Join("\t", DateAndHour.ToShortDateString(), DateAndHour.ToShortTimeString(), PartLabel, Availability);
+        public string ToListItem() 
+            => string.Join("\t", DateAndHour.ToString("ddd"), DateAndHour.ToShortDateString(), DateAndHour.ToShortTimeString(), PartLabel, Availability);
     }
 
     public enum PerformanceAvailability

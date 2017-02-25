@@ -11,7 +11,7 @@ namespace Accio
 {
     internal static class WebBrowserExtensions
     {
-        public static async Task<string> DownloadPage(this WebBrowser browser, string url)
+        public static async Task<string> DownloadPageAsync(this WebBrowser browser, string url)
         {
             browser.SilenceBrowser();
             await browser.GoToPageAsync(url);

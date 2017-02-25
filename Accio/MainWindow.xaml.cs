@@ -30,7 +30,7 @@ namespace Accio
             IsEnabled = false;
             OutputBox.Clear();
             var performances = await new Scrapper(Browser).DownloadPerformances();
-            OutputBox.Text = string.Join("\n", performances.Select(p => p.ToListItem()));
+            OutputBox.Text = string.Join("\n", performances.Where(p => p.Availability != PerformanceAvailability.Full).Select(p => p.ToListItem()));
             IsEnabled = true;
         }
     }
