@@ -24,7 +24,9 @@ namespace Accio
     {
         private static readonly DateTime PeriodeSeekedStart = new DateTime(2017, 4, 5);
         private static readonly DateTime PeriodeSeekedEnd = new DateTime(2017, 4, 10);
+
         private readonly Scrapper _scrapper;
+        private bool _isWatching = false;
 
         public MainWindow()
         {
@@ -34,9 +36,17 @@ namespace Accio
 
         private async void DownloadButton_Click(object sender, RoutedEventArgs e)
         {
-            IsEnabled = false;
-            await CheckAvaliability(TimeSpan.FromMinutes(15));
-            IsEnabled = true;
+            DownloadButton.IsEnabled = false;
+            _isWatching = true;
+            StopButton.IsEnabled = true;
+            await CheckAvaliability(TimeSpan.FromSeconds(15));
+            DownloadButton.IsEnabled = true;
+        }
+
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            _isWatching = false;
+            StopButton.IsEnabled = false;
         }
 
         private async Task CheckAvaliability(TimeSpan delayBetweenCall)
@@ -44,7 +54,7 @@ namespace Accio
             var perfomrancesAvailableBefore = await GetAvailablePerformances();
             OutputPerformances(perfomrancesAvailableBefore);
 
-            while (true)
+            while (_isWatching)
             {
                 await Task.Delay(delayBetweenCall);
                 var performancesAvailable = await GetAvailablePerformances();

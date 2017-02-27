@@ -10,7 +10,10 @@
         <TaskbarItemInfo />
     </Window.TaskbarItemInfo>
     <DockPanel>
-        <Button Name="DownloadButton" DockPanel.Dock="Top" Click="DownloadButton_Click" IsDefault="True">Get availability</Button>
+        <UniformGrid DockPanel.Dock="Top" Rows="1" >
+            <Button Name="DownloadButton" Click="DownloadButton_Click" IsDefault="True">Get availability</Button>
+            <Button Name="StopButton" Click="StopButton_Click" IsEnabled="False">Stop</Button>
+        </UniformGrid>
         <TextBox Name="OutputBox" Height="200" DockPanel.Dock="Top" GotFocus="OutputBox_GotFocus" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         <WebBrowser Name="Browser"></WebBrowser>
     </DockPanel>
