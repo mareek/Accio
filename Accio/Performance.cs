@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Accio
 {
-    public class Performance
+    public class Performance : IEquatable<Performance>
     {
         public Performance(DateTime dateAndHour, int part, PerformanceAvailability availability)
         {
@@ -50,8 +50,20 @@ namespace Accio
             }
         }
 
-        public string ToListItem() 
+        public string ToListItem()
             => string.Join("\t", DateAndHour.ToString("ddd"), DateAndHour.ToShortDateString(), DateAndHour.ToShortTimeString(), PartLabel, Availability);
+
+        public bool Equals(Performance other) => DateAndHour == other?.DateAndHour && Part == other?.Part;
+
+        public override bool Equals(object obj) => Equals(obj as Performance);
+
+        public override int GetHashCode() => DateAndHour.GetHashCode() + Part.GetHashCode();
+
+        public static bool operator ==(Performance left, Performance right) => Equals(left, right);
+
+        public static bool operator !=(Performance left, Performance right) => !Equals(left, right);
+        
+        private static bool Equals(Performance left, Performance right) => left?.Equals(right) ?? (right == null);
     }
 
     public enum PerformanceAvailability

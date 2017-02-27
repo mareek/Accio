@@ -24,6 +24,24 @@ namespace Accio.Test
             CheckPerformanceValues(performances[1], new DateTime(2017, 2, 2, 19, 30, 0), 1, PerformanceAvailability.Limited);
         }
 
+        [Fact]
+        public void TestEquality()
+        {
+            var performance1 = new Performance(DateTime.Today, 1, PerformanceAvailability.Limited);
+            var performance1Bis = new Performance(DateTime.Today, 1, PerformanceAvailability.Full);
+            var performance2 = new Performance(DateTime.Today, 2, PerformanceAvailability.Limited);
+
+            Assert.True(performance1 == performance1Bis);
+            Assert.False(performance1 != performance1Bis);
+            Assert.Equal(performance1, performance1Bis);
+            Assert.Equal(performance1.GetHashCode(), performance1Bis.GetHashCode());
+
+            Assert.False(performance1 == performance2);
+            Assert.True(performance1 != performance2);
+            Assert.NotEqual(performance1, performance2);
+            Assert.NotEqual(performance1.GetHashCode(), performance2.GetHashCode());
+        }
+
         private static void CheckPerformanceValues(Performance performance, DateTime dateAndHour, int part, PerformanceAvailability availability)
         {
             Assert.Equal(dateAndHour, performance.DateAndHour);

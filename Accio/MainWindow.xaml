@@ -6,9 +6,12 @@
         xmlns:local="clr-namespace:Accio"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo />
+    </Window.TaskbarItemInfo>
     <DockPanel>
         <Button Name="DownloadButton" DockPanel.Dock="Top" Click="DownloadButton_Click" IsDefault="True">Get availability</Button>
-        <WebBrowser Name="Browser" DockPanel.Dock="Top" Height="20"></WebBrowser>
-        <TextBox Name="OutputBox" />
+        <TextBox Name="OutputBox" Height="200" DockPanel.Dock="Top" GotFocus="OutputBox_GotFocus" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        <WebBrowser Name="Browser"></WebBrowser>
     </DockPanel>
 </Window>
