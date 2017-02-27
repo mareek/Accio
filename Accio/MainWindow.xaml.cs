@@ -39,7 +39,7 @@ namespace Accio
             DownloadButton.IsEnabled = false;
             _isWatching = true;
             StopButton.IsEnabled = true;
-            await CheckAvaliability(TimeSpan.FromSeconds(15));
+            await CheckAvaliability(TimeSpan.FromMinutes(15));
             DownloadButton.IsEnabled = true;
         }
 
