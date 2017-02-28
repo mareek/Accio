@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Accio"
         mc:Ignorable="d"
         Title="Accio" Height="350" Width="525"
-        GotFocus="Window_GotFocus">
+        Activated="Window_Activated">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo />
     </Window.TaskbarItemInfo>
