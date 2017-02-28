@@ -97,7 +97,7 @@ namespace Accio
             return performances.Where(p => p.Availability != PerformanceAvailability.Full).ToArray();
         }
 
-        private void OutputBox_GotFocus(object sender, RoutedEventArgs e)
+        private void Window_GotFocus(object sender, RoutedEventArgs e)
         {
             StopFlashInTaskBar();
         }

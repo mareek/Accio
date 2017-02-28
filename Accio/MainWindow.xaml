@@ -5,7 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Accio"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Accio" Height="350" Width="525"
+        GotFocus="Window_GotFocus">
     <Window.TaskbarItemInfo>
         <TaskbarItemInfo />
     </Window.TaskbarItemInfo>
@@ -14,7 +15,7 @@
             <Button Name="DownloadButton" Click="DownloadButton_Click" IsDefault="True">Get availability</Button>
             <Button Name="StopButton" Click="StopButton_Click" IsEnabled="False">Stop</Button>
         </UniformGrid>
-        <TextBox Name="OutputBox" Height="200" DockPanel.Dock="Top" GotFocus="OutputBox_GotFocus" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
+        <TextBox Name="OutputBox" Height="200" DockPanel.Dock="Top" ScrollViewer.VerticalScrollBarVisibility="Auto"/>
         <WebBrowser Name="Browser"></WebBrowser>
     </DockPanel>
 </Window>
