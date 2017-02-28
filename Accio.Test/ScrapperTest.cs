@@ -17,18 +17,33 @@ namespace Accio.Test
             var pageDownloaderFake = new PageDownloaderFake();
             pageDownloaderFake.SetPage(Scrapper.LandingPageUrl, File.ReadAllText(@"Resources\LandingPage.html"));
             pageDownloaderFake.SetPage(bookingPageUrl, File.ReadAllText(@"Resources\BookingPage.html"));
+
             var scrapper = new Scrapper(pageDownloaderFake);
             var performances = await scrapper.DownloadPerformances();
+
             Assert.NotEmpty(performances);
+            Assert.True(pageDownloaderFake.IsInInitialState);
         }
 
         private class PageDownloaderFake : IPageDownloader
         {
             private readonly Dictionary<string, string> _pagesByUrl = new Dictionary<string, string>();
 
+            public bool IsInInitialState { get; private set; } = true;
+
             public void SetPage(string url, string page) => _pagesByUrl[url] = page;
 
-            public Task<string> DownloadPageAsync(string url) => Task.FromResult(_pagesByUrl[url]);
+            public Task<string> DownloadPageAsync(string url)
+            {
+                IsInInitialState = false;
+                return Task.FromResult(_pagesByUrl[url]);
+            }
+
+            public Task ReturnToInitialState()
+            {
+                IsInInitialState = true;
+                return Task.FromResult(true);
+            }
         }
     }
 }

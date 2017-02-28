@@ -58,9 +58,8 @@ namespace Accio
             {
                 await Task.Delay(delayBetweenCall);
                 var performancesAvailable = await GetAvailablePerformances();
-                var newPerformances = performancesAvailable.Except(perfomrancesAvailableBefore).ToList();
                 OutputPerformances(performancesAvailable);
-                if (newPerformances.Any())
+                if (performancesAvailable.Except(perfomrancesAvailableBefore).Any())
                 {
                     FlashInTaskBar();
                 }
@@ -77,10 +76,13 @@ namespace Accio
                 if (performancesAvailable.Any(p => PeriodeSeekedStart <= p.DateAndHour && p.DateAndHour <= PeriodeSeekedEnd))
                 {
                     FlashInTaskBar();
+                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.Normal;
+                    TaskbarItemInfo.ProgressValue = 1d;
                     OutputBox.Background = Brushes.Chartreuse;
                 }
                 else
                 {
+                    TaskbarItemInfo.ProgressState = TaskbarItemProgressState.None;
                     OutputBox.Background = Brushes.White;
                 }
             });

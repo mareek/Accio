@@ -9,5 +9,7 @@ namespace Accio
     public interface IPageDownloader
     {
         Task<string> DownloadPageAsync(string url);
+
+        Task ReturnToInitialState();
     }
 }

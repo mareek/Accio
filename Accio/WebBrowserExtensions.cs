@@ -20,7 +20,7 @@ namespace Accio
             return document.documentElement.InnerHtml;
         }
 
-        private static async Task GoToPageAsync(this WebBrowser browser, string url)
+        public static async Task GoToPageAsync(this WebBrowser browser, string url)
         {
             var resultGenerator = new TaskCompletionSource<bool>();
             LoadCompletedEventHandler loadCompletedEvent = (_, __) => resultGenerator.SetResult(true);

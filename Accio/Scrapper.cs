@@ -30,6 +30,7 @@ namespace Accio
             var bookingPageContent = await _pageDownloader.DownloadPageAsync(bookingPageUrl);
             var bookingData = _analyser.ExtractDataFromBookingPage(bookingPageContent);
 
+            await _pageDownloader.ReturnToInitialState();
             return Performance.ParsePerformances(bookingData);
         }
     }

@@ -17,5 +17,7 @@ namespace Accio
         }
 
         public async Task<string> DownloadPageAsync(string url) => await _browser.DownloadPageAsync(url);
+
+        public async Task ReturnToInitialState() => await _browser.GoToPageAsync("about:blank");
     }
 }
